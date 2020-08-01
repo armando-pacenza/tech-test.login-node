@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Based on Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="author" content="Armando Pacenza">
+  <meta name="generator" content="Jekyll v4.0.1">
+  <title>Login Sistema de Contratos</title>
+
+  <link href="/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+  <link href="/css/login.css" type="text/css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+   
+  </style>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top p-0">
+    <a class="navbar-brand" href="#">Sistema de Facturas</a>
+    <button class="navbar-toggler p-1" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+      aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse container" id="navbarsLogin">
+      <ul class="navbar-nav mr-auto ">
+        <% for ( let opcion of navigation) {%>
+          <li class="nav-item <% if (opcion.disabled == 'true') { %> disabled <% }else {%> active <%}%> col-7">
+            <a class="nav-link <% if (opcion.disabled == 'true') { %> disabled <% }else {%> active <%}%> "
+                  href="<%= opcion.link %>" aria-disabled='<%=opcion.disabled %>' > <%=opcion.name%> </a>
+          </li>
+        <%}%>
+      </ul>
+      <ul>
+    </div>
+  </nav>
+
+  <main role="main" class="container"></main>
+  
+    <div class="starter-template">
+      
+    </div>
+  </main>
+
+<!-- The Modal -->
+<div id="modal-login" class="modal container-xs" 
+<% if (opcionesMenuesModal['modal-login'] == true) { %>
+  style="display: block;" 
+<% } %>
+>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate col-7" action="/login/sign-in" method="POST">
+    <span onclick="document.getElementById('modal-login').style.display='none'" class="close" title="Close Modal">&times;</span>
+    
+    <!-- Aca se puedeo poner un avatar.
+    <div class="imgcontainer">
+      <img src="" alt="Avatar" class="avatar">
+    </div>
+    -->
+      <div>
+      <label for="usuario"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="usuario" required>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+      </div>
+    <div  style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('modal-login').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<div id="modal-error" class="modal container-xs" 
+<% if (opcionesMenuesModal['modal-error'] == true) { %>
+  style="display: block;" 
+<% } %>
+>
+  <!-- Modal Content -->
+  <form class="modal-content animate col-7" action="/login" method="GET">
+    <span onclick="document.getElementById('modal-error').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <div class="row justify-content-center">
+    <h2 style="color: red;"> Error Usuario o Password Incorrecta</h2>
+    </div>
+    
+    <div  style="background-color:#f1f1f1">
+      <button type="button" class="okbtn" onclick="document.getElementById('modal-error').style.display='none'">Aceptar</button>  
+    </div>
+  </form>
+    
+</div>
+
+  <script src="/js/jquery.slim.min.js"></script>
+
+  <script src="/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
