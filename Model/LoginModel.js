@@ -6,13 +6,19 @@ const debug = require('debug')('LoginApp');
 const mysql = require('mysql');
 const chalk = require('chalk');
 
-function loginModel() { // FacturaModel es un nombre interno solo se usa en el module.exports
+function loginModel() { // loginModel es un nombre interno solo se usa en el module.exports
   function getMysqlConnection(callbackResult) {
+    const mySqlPort = process.env.MYSQL_PORT || 3306;
+    const mySqlHost = process.env.MYSQL_HOST || 'localhost';
+    const mySqlUser = process.env.MYSQL_USER;
+    const mySqlPassword = process.env.MYSQL_PASSWORD;
+    const mySqlDatabase = process.env.MYSQL_DATABASE;
     const connection = mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: 'password',
-      database: 'Login'
+      port: mySqlPort,
+      host: mySqlHost,
+      user: mySqlUser,
+      password: mySqlPassword,
+      database: mySqlDatabase
     });
 
     connection.connect((err) => {

@@ -15,6 +15,7 @@ module.exports = function estrategiaLocal() {
         if (err) {
           debug(`ha ocurrid0 un error al buscar usuario ${usr} - error: ${err.message}`);
           done(null, false);
+          return;
         }
         if (usr[0] != null && usr[0].Password === password) {
           const user = {
